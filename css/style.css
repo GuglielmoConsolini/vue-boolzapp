@@ -5,7 +5,7 @@
 }
 
 i{
-    font-size: 30px;
+    font-size: 25px;
 }
 
 .wrapper{
@@ -29,6 +29,8 @@ i{
 
 .right-col{
     width: 60%;
+    display: flex;
+    flex-direction: column;
 }
 
 .alert-box{
@@ -52,7 +54,7 @@ i{
 }
 
 .contact-list{
-    overflow:scroll;
+    overflow:auto;
     height: 525px;
 }
 
@@ -73,6 +75,6 @@ i{
 }
 
 .text-container{
-    height: 80%;
-    background-image: url('');
+    height: 85%;
+    background-image: url(./img/mine.jpg);
 }

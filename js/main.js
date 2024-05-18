@@ -3,6 +3,13 @@ const { createApp } = Vue;
 createApp({
     data() {
         return{
+            activeIndex: 0,
+            activeContact: {
+                name: '',
+                avatar: '',
+                messages: []
+            },
+
         contacts: [
             {
                 name: 'Michele',
@@ -169,10 +176,13 @@ createApp({
         }
     },
     methods: {
-        // Qui puoi definire i tuoi metodi
+        setActiveContact(index) {
+            this.activeIndex = index;
+            this.activeContact = this.contacts[index];
+    }
     },
     mounted() {
         console.log("App montata");
-        // Qui puoi eseguire operazioni quando l'istanza Vue è montata
+        this.setActiveContact(0);
     }
 }).mount('#app');
