@@ -78,3 +78,29 @@ i{
     height: 85%;
     background-image: url(./img/mine.jpg);
 }
+
+.message {
+    margin-bottom: 10px;
+    padding: 8px;
+    border-radius: 8px;
+}
+
+.sent {
+    background-color: #DCF8C6;
+    align-self: flex-end;
+}
+
+.received {
+    background-color: #EAEAEA;
+    align-self: flex-start;
+    text-align: end;
+}
+
+.content {
+    color: #333;
+}
+
+.date {
+    font-size: 0.8rem;
+    color: #666;
+}

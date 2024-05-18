@@ -14,17 +14,22 @@
     <div class="wrapper">
         <div id="app">
             <div class="left-col">
-                <nav class="navbar bg-body-tertiary">
-                    <div class="container-fluid">
-                        <a class="navbar-brand" href="#">
-                            <img class="rounded-circle" src="https://i.pravatar.cc/400?img=70" alt="Logo" width="50" height="50">
-                            Pierpaolo
-                            <i class="fa-solid fa-circle-notch"></i>
-                            <i class="fa-solid fa-message"></i>
-                            <i class="fa-solid fa-ellipsis-vertical"></i>
-                        </a>
+                <div class="d-flex justify-content-between align-items-center border-end">
+                    <div class="d-flex align-items-center">
+                        <div class="img-box">
+                            <img src="https://i.pravatar.cc/400?img=70" class="rounded-circle" alt="">
+                        </div>
+                        <div>
+                            <h5>Pierpaolo</h5>
+                            <p>Status: online</p>
+                        </div>
                     </div>
-                </nav>
+                    <div>
+                        <i class="fa-solid fa-circle-notch me-3"></i>
+                        <i class="fa-solid fa-message me-3"></i>
+                        <i class="fa-solid fa-ellipsis-vertical me-2"></i>
+                    </div>
+                </div>
                 <div class="alert-box">
                     <span class="icon-box rounded-circle"><i class="fa-solid fa-bell-slash"></i></span>
                     <div>
@@ -45,7 +50,7 @@
                         </div>
                         <div>
                             <h5>{{ contatto.name }}</h5>
-                            <p>ultimo messaggio inviato {{activeContact.messages.date}}</p>
+                            <p>Ultimo messaggio inviato</p>
                         </div>
                         <div>
                             <span>12:00</span>
@@ -61,16 +66,21 @@
                         </div>
                         <div>
                             <h5>{{ activeContact.name }}</h5>
-                            <p>ultimo accesso oggi alle</p>
+                            <p>Ultimo accesso oggi alle 12:00</p>
                         </div>
                     </div>
                     <div>
-                        <i class="fa-solid fa-magnifying-glass"></i>
-                        <i class="fa-solid fa-paperclip"></i>
-                        <i class="fa-solid fa-ellipsis-vertical"></i>
+                        <i class="fa-solid fa-magnifying-glass me-3"></i>
+                        <i class="fa-solid fa-paperclip me-3"></i>
+                        <i class="fa-solid fa-ellipsis-vertical me-2"></i>
                     </div>
                 </div>
-                <div class="text-container"></div>
+                <div class="text-container">
+                    <div v-for="(dialogo, index) in activeContact.messages" :key="index" :class="['message', dialogo.status]">
+                        <div class="content">{{ dialogo.message }}</div>
+                        <div class="date">{{ dialogo.date }}</div>
+                    </div>
+                </div>
                 <div class="row align-items-center">
                     <div class="col-2 text-center">
                         <i class="fa-regular fa-face-smile"></i>
