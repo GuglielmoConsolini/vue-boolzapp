@@ -179,6 +179,25 @@ createApp({
         setActiveContact(index) {
             this.activeIndex = index;
             this.activeContact = this.contacts[index];
+    },
+    sendMessage() {
+        if (this.newMessage.trim() !== '') {
+            const currentDate = new Date().toLocaleString();
+            this.activeContact.messages.push({
+                date: currentDate,
+                message: this.newMessage,
+                status: 'sent'
+            });
+            this.newMessage = ''; // Resetta il campo di input dopo l'invio del messaggio
+            // Simulazione della risposta dopo 1 secondo
+            setTimeout(() => {
+                this.activeContact.messages.push({
+                    date: currentDate,
+                    message: 'Ok',
+                    status: 'received'
+                });
+            }, 1000);
+        }
     }
     },
     mounted() {

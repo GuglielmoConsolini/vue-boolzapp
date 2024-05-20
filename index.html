@@ -15,12 +15,12 @@
         <div id="app">
             <div class="left-col">
                 <div class="d-flex justify-content-between align-items-center border-end">
-                    <div class="d-flex align-items-center">
+                    <div class="d-flex align-items-center p-1">
                         <div class="img-box">
                             <img src="https://i.pravatar.cc/400?img=70" class="rounded-circle" alt="">
                         </div>
                         <div>
-                            <h5>Pierpaolo</h5>
+                            <h5 class=" ms-3">Pierpaolo</h5>
                             <p>Status: online</p>
                         </div>
                     </div>
@@ -59,7 +59,7 @@
                 </div>
             </div>
             <div class="right-col d-flex flex-column">
-                <div class="d-flex justify-content-between align-items-center">
+                <div class="d-flex justify-content-between align-items-center p-1">
                     <div class="d-flex align-items-center">
                         <div class="img-box">
                             <img :src="activeContact.avatar" class="rounded-circle" alt="">
@@ -86,7 +86,7 @@
                         <i class="fa-regular fa-face-smile"></i>
                     </div>
                     <div class="col-8">
-                        <input type="text" class="w-100 p-2" placeholder="Scrivi un messaggio">
+                        <input type="text" class="w-100 p-2" placeholder="Scrivi un messaggio" v-model="newMessage" @keyup.enter="sendMessage">
                     </div>
                     <div class="col-2 text-center">
                         <i class="fa-solid fa-microphone"></i>
