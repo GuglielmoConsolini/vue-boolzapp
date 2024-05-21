@@ -9,6 +9,7 @@ createApp({
                 avatar: '',
                 messages: []
             },
+            newMessage: '',
 
         contacts: [
             {
@@ -172,14 +173,33 @@ createApp({
                     }
                 ],
             }
-        ]
+        ],
+        searchQuery: '',
+        filteredContacts: [],
+        isStatusRed: true
         }
     },
     methods: {
+
+        // FUNZIONE PER SETTARE IL CONTATTO ATTIVO
         setActiveContact(index) {
             this.activeIndex = index;
             this.activeContact = this.contacts[index];
+            
     },
+     
+    // FUNZIONE PER FILTRARE I CONTATTI NELL'INPUT DI RICERCA
+    filterContacts() {
+        if (this.searchQuery === '') {
+            this.filteredContacts = this.contacts;
+        } else {
+            this.filteredContacts = this.contacts.filter(contact =>
+                contact.name.toLowerCase().startsWith(this.searchQuery.toLowerCase())
+            );
+        }
+    },
+    
+    // FUNZIONE PER INVIARE E RICEVERE MESSAGGI
     sendMessage() {
         if (this.newMessage.trim() !== '') {
             const currentDate = new Date().toLocaleString();
@@ -188,8 +208,8 @@ createApp({
                 message: this.newMessage,
                 status: 'sent'
             });
-            this.newMessage = ''; // Resetta il campo di input dopo l'invio del messaggio
-            // Simulazione della risposta dopo 1 secondo
+            this.isStatusRed = false;
+            this.newMessage = ''; 
             setTimeout(() => {
                 this.activeContact.messages.push({
                     date: currentDate,
@@ -203,5 +223,6 @@ createApp({
     mounted() {
         console.log("App montata");
         this.setActiveContact(0);
+        this.filterContacts()
     }
 }).mount('#app');

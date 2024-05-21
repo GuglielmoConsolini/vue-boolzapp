@@ -25,6 +25,8 @@ i{
 
 .left-col{
     width: 40%;
+    display: flex;
+    flex-direction: column;
 }
 
 .right-col{
@@ -45,7 +47,7 @@ i{
    height: 50px;
    width: 50px;
    text-align: center;
-   padding-top: 0.5rem;
+   padding-top: 0.6rem;
    margin-right: 0.5rem;
 }
 
@@ -55,7 +57,6 @@ i{
 
 .contact-list{
     overflow:auto;
-    height: 525px;
 }
 
 .img-box{
@@ -73,6 +74,8 @@ i{
     margin-bottom: 0.2rem;
     justify-content: space-between;
 }
+
+/* STILE PER I MESSAGGI INVIATI E RICEVUTI */
 
 .text-container{
     height: 85%;
@@ -103,4 +106,14 @@ i{
 .date {
     font-size: 0.8rem;
     color: #666;
+}
+
+/* CLASSI PER LO STATO */
+
+.status-red {
+    color: red;
+}
+
+.status-green {
+    color: green;
 }

@@ -13,15 +13,17 @@
 <body>
     <div class="wrapper">
         <div id="app">
+
+            <!-- SEZIONE LISTA CONTATTI -->
             <div class="left-col">
                 <div class="d-flex justify-content-between align-items-center border-end">
                     <div class="d-flex align-items-center p-1">
-                        <div class="img-box">
+                        <div class="img-box me-2">
                             <img src="https://i.pravatar.cc/400?img=70" class="rounded-circle" alt="">
                         </div>
                         <div>
                             <h5 class=" ms-3">Pierpaolo</h5>
-                            <p>Status: online</p>
+                            <p :class="isStatusRed ? 'status-red' : 'status-green'">Status: online</p>
                         </div>
                     </div>
                     <div>
@@ -37,14 +39,18 @@
                         <a href="">Attiva notifiche desktop</a>
                     </div>
                 </div>
+
+                <!-- INPUT PER RICERCA CONTATTI -->
                 <div class="container-search">
                     <form class="d-flex" role="search">
-                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" v-model="searchQuery" @input="filterContacts">
                         <button class="btn btn-outline-success" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
                     </form>
                 </div>
+
+                <!-- LISTA CONTATTI CON CICLO V-FOR -->
                 <div class="contact-list">
-                    <div v-for="(contatto, i) in contacts" :key="i" class="contact-row border-bottom d-flex" @click="setActiveContact(i)">
+                    <div v-for="(contatto, i) in filteredContacts" :key="i" class="contact-row border-bottom d-flex" @click="setActiveContact(i)">
                         <div class="img-box">
                             <img :src="contatto.avatar" class="rounded-circle" alt="">
                         </div>
@@ -58,6 +64,8 @@
                     </div>
                 </div>
             </div>
+
+            <!-- SEZIONE CHAT CON I CONTATTI -->
             <div class="right-col d-flex flex-column">
                 <div class="d-flex justify-content-between align-items-center p-1">
                     <div class="d-flex align-items-center">
@@ -85,6 +93,8 @@
                     <div class="col-2 text-center">
                         <i class="fa-regular fa-face-smile"></i>
                     </div>
+
+                    <!-- INPUT PER INVIARE I MESSAGGI -->
                     <div class="col-8">
                         <input type="text" class="w-100 p-2" placeholder="Scrivi un messaggio" v-model="newMessage" @keyup.enter="sendMessage">
                     </div>
